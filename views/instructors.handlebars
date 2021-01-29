@@ -1,0 +1,26 @@
+<link rel="stylesheet" href="/css/instructors.css">
+<h1>Instructors</h1>
+
+<form>
+    <fieldset>
+        <legend>Add Instructor</legend>
+
+        <input type="hidden" value={{id}}>
+
+        <label>First Name:</label>
+        <input type="text" id="fname" maxlength="255" value={{fname}}>
+
+        <label>Last Name:</label>
+        <input type="text" id="lname" maxlength="255" {{lname}}>
+
+        <label>Department</label>
+        <input list="departments" id="department" value={{department}}>
+        <datalist id="departments">
+            <option value="Science">
+            <option value="Liberal Arts">
+            <option value="Engineering">
+        </datalist>
+
+        <input type="submit" id="postSubmit">
+    </fieldset>
+</form>

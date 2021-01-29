@@ -1,0 +1,46 @@
+<link rel="stylesheet" href="/css/students.css">
+<h1>Students</h1>
+
+<form>
+    <fieldset>
+        <legend>Add Student</legend>
+
+        <input type="hidden" value={{id}}>
+
+        <label>First Name:</label>
+        <input type="text" id="fname" maxlength="255" value={{fname}}>
+
+        <label>Last Name:</label>
+        <input type="text" id="lname" maxlength="255" value={{lname}}>
+
+        <label>Expected graduation date</label>
+        <input type="date" id="egdate" value={{egdate}}>
+
+        <label>Units in progress:</label>
+        <input type="number" id="unitsProgress" value={{unitsProgress}}>
+
+        <label>Units Completed</label>
+        <input type="date" id="unitsCompleted" value={{unitsCompleted}}>
+
+        <label>Department</label>
+        <input list="departments" id="department" value={{department}}>
+        <datalist id="departments">
+            <option value="Science">
+            <option value="Liberal Arts">
+            <option value="Engineering">
+        </datalist>
+
+        <label>Major</label>
+        <input list="majors" id="major" value={{major}}>
+        <datalist id="majors">
+            <option value="Art">
+            <option value="Biology">
+            <option value="Computer Science">
+            <option value="Engineering">
+            <option value="English">
+            <option value="Mathematics">
+        </datalist>
+
+        <input type="submit" id="postSubmit">
+    </fieldset>
+</form>
