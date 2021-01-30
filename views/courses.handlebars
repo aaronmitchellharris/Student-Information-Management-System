@@ -7,6 +7,9 @@
 
         <input type="hidden" value={{id}}>
 
+        <label>Course Name</label>
+        <input type="text" id="name" maxlength="255" {{name}}>
+
         <label>Units</label>
         <input type="number" id="units" {{units}}>
 
@@ -29,3 +32,13 @@
         <input type="submit" id="postSubmit">
     </fieldset>
 </form>
+
+<table>
+    <thead>
+        <tr>ID</tr>
+        <tr>Name</tr>
+        <tr>Units</tr>
+        <tr>Department</tr>
+        <tr>Instructor</tr>
+    </thead>
+</table>
