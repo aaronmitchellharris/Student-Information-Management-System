@@ -40,6 +40,10 @@ app.get('/departments', function(req,res){
     res.render('departments')
 });
 
+app.get('/students_courses', function(req,res){
+    res.render('students_courses')
+});
+
 app.use(function(req,res){
   res.status(404);
   res.render('404');
