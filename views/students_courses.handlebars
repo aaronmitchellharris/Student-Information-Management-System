@@ -6,13 +6,13 @@
         <legend>Connect a Student with a Course</legend>
 
         <label>Student ID</label>
-        <input type="text" id="sid" maxlength="4" {{sid}}>
+        <input type="text" id="sid" maxlength="4">
 
         <label>Course ID</label>
-        <input type="text" id="cid" maxlength="255" {{cid}}>
+        <input type="text" id="cid" maxlength="255">
 
         <label>Grade</label>
-        <input list="grades" id="grade" value={{grade}}>
+        <input list="grades" id="grade">
         <datalist id="grades">
             <option value="IP">
             <option value="A">
@@ -23,6 +23,20 @@
         </datalist>
 
         <input type="submit" id="postSubmit">
+    </fieldset>
+</form>
+
+<form>
+    <fieldset>
+        <legend>Remove Student Course Relationship</legend>
+
+        <label>Student ID</label>
+        <input type="text" id="sid" maxlength="4">
+
+        <label>Course ID</label>
+        <input type="text" id="cid" maxlength="255">
+
+        <input type="submit" id="postRemove">
     </fieldset>
 </form>
 
