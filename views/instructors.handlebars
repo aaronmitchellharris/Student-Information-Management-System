@@ -1,58 +1,100 @@
 <link rel="stylesheet" href="/css/instructors.css">
 <h1>Instructors</h1>
 
-<form>
-    <fieldset>
-        <legend>Add Instructor</legend>
+<div class="card container mt-3">
+    <form>
+        <fieldset>
+            <legend>Add Instructor</legend>
 
-        <label>First Name:</label>
-        <input type="text" id="fname" maxlength="255">
+            <div class="m-3">
+                <label>First Name:</label>
+                <input type="text" class="form-control" id="fname" maxlength="255">
+            </div>
 
-        <label>Last Name:</label>
-        <input type="text" id="lname" maxlength="255">
+            <div class="m-3">
+                <label>Last Name:</label>
+                <input type="text" class="form-control" id="lname" maxlength="255">
+            </div>
 
-        <label>Department</label>
-        <input list="departments" id="department">
-        <datalist id="departments">
-            <option value="Science">
-            <option value="Liberal Arts">
-            <option value="Engineering">
-        </datalist>
+            <div class="m-3">
+                <label>Department</label>
+                <input list="departments" class="form-control" id="department">
+                <datalist id="departments">
+                    <option value="Science">
+                    <option value="Liberal Arts">
+                    <option value="Engineering">
+                </datalist>
+            </div>
 
-        <input type="submit" id="postSubmit">
-    </fieldset>
-</form>
+            <input type="submit" class="btn btn-primary m-3" id="postSubmit" value="Add">
+        </fieldset>
+    </form>
+</div>
 
-<form>
-    <fieldset>
-        <legend>Remove Instructor</legend>
+<div class="card container mt-3">
+    <form>
+        <fieldset>
+            <legend>Remove Instructor</legend>
 
-        <label>Instructor ID</label>
-        <input type="number" id="id">
+            <div class="m-3">
+                <label>Instructor ID</label>
+                <input type="number" class="form-control" id="id">
+            </div>
 
-        <label>First Name:</label>
-        <input type="text" id="fname" maxlength="255">
+            <div class="m-3">
+                <label>First Name:</label>
+                <input type="text" class="form-control" id="fname" maxlength="255">
+            </div>
 
-        <label>Last Name:</label>
-        <input type="text" id="lname" maxlength="255">
+            <div class="m-3">
+                <label>Last Name:</label>
+                <input type="text" class="form-control" id="lname" maxlength="255">
+            </div>
 
-        <label>Department</label>
-        <input list="departments" id="department">
-        <datalist id="departments">
-            <option value="Science">
-            <option value="Liberal Arts">
-            <option value="Engineering">
-        </datalist>
+            <div class="m-3">
+                <label>Department</label>
+                <input list="departments" class="form-control" id="department">
+                <datalist id="departments">
+                    <option value="Science">
+                    <option value="Liberal Arts">
+                    <option value="Engineering">
+                </datalist>
+            </div>
 
-        <input type="submit" id="postRemove">
-    </fieldset>
-</form>
+            <input type="submit" class="btn btn-primary m-3" id="postRemove" value="Remove">
+        </fieldset>
+    </form>
+</div>
 
-<table class="table">
-    <thead>
-        <tr>ID</tr>
-        <tr>First Name</tr>
-        <tr>Last Name</tr>
-        <tr>Department</tr>
-    </thead>
-</table>
+<div class="card container mt-3 mb-3">
+    <table class="table">
+        <thead>
+            <tr>
+                <td>ID</td>
+                <td>First Name</td>
+                <td>Last Name</td>
+                <td>Department</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Instructor</td>
+                <td>1</td>
+                <td>Liberal Arts</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Instructor</td>
+                <td>2</td>
+                <td>Science</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Instructor</td>
+                <td>3</td>
+                <td>Engineering</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

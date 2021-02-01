@@ -1,31 +1,65 @@
 <link rel="stylesheet" href="/css/departments.css">
 <h1>Departments</h1>
 
-<form>
-    <fieldset>
-        <legend>Add Department</legend>
+<div class="card container mt-3">
+    <form>
+        <fieldset>
+            <legend>Add Department</legend>
 
-        <label>Department Code</label>
-        <input type="text" id="code" maxlength="4">
+            <div class="m-3">
+                <label>Department Code</label>
+                <input type="text" class="form-control" id="code" maxlength="4">
+            </div>
 
-        <label>Department Name</label>
-        <input type="text" id="name" maxlength="255">
+            <div class="m-3">
+                <label>Department Name</label>
+                <input type="text" class="form-control" id="name" maxlength="255">
+            </div>
 
-        <label>Instructor Count</label>
-        <input type="number" id="icount">
+            <div class="m-3">
+                <label>Instructor Count</label>
+                <input type="number" class="form-control" id="icount">
+            </div>
 
-        <label>Course Count</label>
-        <input type="number" id="ccount">
+            <div class="m-3">
+                <label>Course Count</label>
+                <input type="number" class="form-control" id="ccount">
+            </div>
 
-        <input type="submit" id="postSubmit">
-    </fieldset>
-</form>
+            <input type="submit" class="btn btn-primary m-3" id="postSubmit" value="Add">
+        </fieldset>
+    </form>
+</div>
 
-<table class="table">
-    <thead>
-        <tr>CODE</tr>
-        <tr>Name</tr>
-        <tr>Instructor Count</tr>
-        <tr>Course Count</tr>
-    </thead>
-</table>
+<div class="card container mt-3 mb-3">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>CODE</th>
+                <th>Name</th>
+                <th>Instructor Count</th>
+                <th>Course Count</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>ENGR</td>
+                <td>Engineering</td>
+                <td>1</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td>LART</td>
+                <td>Liberal Arts</td>
+                <td>1</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td>SCIE</td>
+                <td>Science</td>
+                <td>1</td>
+                <td>1</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
