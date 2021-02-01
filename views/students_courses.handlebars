@@ -1,49 +1,70 @@
 <link rel="stylesheet" href="/css/students_courses.css">
 <h1>Students and Courses</h1>
 
-<form>
-    <fieldset>
-        <legend>Connect a Student with a Course</legend>
+<div class="card container mt-3">
+    <form>
+        <fieldset>
+            <legend>Connect a Student with a Course</legend>
 
-        <label>Student ID</label>
-        <input type="text" id="sid" maxlength="4">
+            <div class="m-3">
+                <label class="form-label">Student ID</label>
+                <input type="text" class="form-control" id="sid" maxlength="4">
+            </div>
 
-        <label>Course ID</label>
-        <input type="text" id="cid" maxlength="255">
+            <div class="m-3">
+                <label>Course ID</label>
+                <input type="text" class="form-control" id="cid" maxlength="255">
+            </div>
 
-        <label>Grade</label>
-        <input list="grades" id="grade">
-        <datalist id="grades">
-            <option value="IP">
-            <option value="A">
-            <option value="B">
-            <option value="C">
-            <option value="D">
-            <option value="F">
-        </datalist>
+            <div class="m-3">
+                <label>Grade</label>
+                <input list="grades" class="form-control" id="grade">
+                <datalist id="grades">
+                    <option value="IP">
+                    <option value="A">
+                    <option value="B">
+                    <option value="C">
+                    <option value="D">
+                    <option value="F">
+                </datalist>
+            </div>
 
-        <input type="submit" id="postSubmit">
-    </fieldset>
-</form>
+            <input type="submit" id="postSubmit" class="btn btn-primary" value="Connect">
+        </fieldset>
+    </form>
+</div>
 
-<form>
-    <fieldset>
-        <legend>Remove Student Course Relationship</legend>
+<div class="card container mt-3">
+    <form>
+        <fieldset>
+            <legend>Remove Student Course Relationship</legend>
 
-        <label>Student ID</label>
-        <input type="text" id="sid" maxlength="4">
+            <div class="m-3">
+                <label>Student ID</label>
+                <input type="text" class="form-control" id="sid" maxlength="4">
+            </div>
 
-        <label>Course ID</label>
-        <input type="text" id="cid" maxlength="255">
+            <div class="m-3">
+                <label>Course ID</label>
+                <input type="text" class="form-control" id="cid" maxlength="255">
+            </div>
 
-        <input type="submit" id="postRemove">
-    </fieldset>
-</form>
+            <input type="submit" id="postRemove" class="btn btn-primary" value="Remove">
+        </fieldset>
+    </form>
+</div>
 
-<table>
-    <thead>
-        <tr>Student ID</tr>
-        <tr>Course ID</tr>
-        <tr>Grade</tr>
-    </thead>
-</table>
+<div class="card container mt-3">
+    <table class="table">
+        <thead>
+            <th>Student ID</th>
+            <th>Course ID</th>
+            <th>Grade</th>
+        </thead>
+        <tr>
+            <td>123</td>
+            <td>456</td>
+            <td>A</td>
+        </tr>
+    </table>
+</div>
