@@ -1,147 +1,216 @@
 <link rel="stylesheet" href="/css/students.css">
 <h1>Students</h1>
 
-<form>
-    <fieldset>
-        <legend>Add Student</legend>
+<div class="card container mt-3">
+    <form>
+        <fieldset>
+            <legend>Add Student</legend>
 
-        <label>First Name:</label>
-        <input type="text" id="fname" maxlength="255">
 
-        <label>Last Name:</label>
-        <input type="text" id="lname" maxlength="255">
+            <div class="m-3">
+                <label>First Name:</label>
+                <input type="text" id="fname" maxlength="255">
+            </div>
 
-        <label>Expected graduation date</label>
-        <input type="date" id="egdate">
+            <div class="m-3">
+                <label>Last Name:</label>
+                <input type="text" id="lname" maxlength="255">
+            </div>
 
-        <label>Units in progress:</label>
-        <input type="number" id="unitsProgress">
+            <div class="m-3">
+                <label>Expected graduation date</label>
+                <input type="date" id="egdate">
+            </div>
 
-        <label>Units Completed</label>
-        <input type="date" id="unitsCompleted">
+            <div class="m-3">
+            <label>Units in progress:</label>
+            <input type="number" id="unitsProgress">
+            </div>
 
-        <label>Department</label>
-        <input list="departments" id="department">
-        <datalist id="departments">
-            <option value="Science">
-            <option value="Liberal Arts">
-            <option value="Engineering">
-        </datalist>
+            <div class="m-3">
+            <label>Units Completed</label>
+            <input type="date" id="unitsCompleted">
+            </div>
 
-        <label>Major</label>
-        <input list="majors" id="major">
-        <datalist id="majors">
-            <option value="Art">
-            <option value="Biology">
-            <option value="Computer Science">
-            <option value="Engineering">
-            <option value="English">
-            <option value="Mathematics">
-        </datalist>
+            <div class="m-3">
+            <label>Department</label>
+            <input list="departments" id="department">
+            <datalist id="departments">
+                <option value="Science">
+                <option value="Liberal Arts">
+                <option value="Engineering">
+            </datalist>
+            </div>
 
-        <input type="submit" id="postSubmit">
-    </fieldset>
-</form>
+            <div class="m-3">
+            <label>Major</label>
+            <input list="majors" id="major">
+            <datalist id="majors">
+                <option value="Art">
+                <option value="Biology">
+                <option value="Computer Science">
+                <option value="Engineering">
+                <option value="English">
+                <option value="Mathematics">
+            </datalist>
+            </div>
 
-<form>
-    <fieldset>
-        <legend>Update Student</legend>
+            <input type="submit" class="btn btn-primary m-3" id="postSubmit" value="Add">
+        </fieldset>
+    </form>
+</div>
 
-        <label>Student ID</label>
-        <input type="number" id="id">
+<div class="card container mt-3">
+    <form>
+        <fieldset>
+            <legend>Update Student</legend>
 
-        <label>First Name:</label>
-        <input type="text" id="fname" maxlength="255">
+            <div class="m-3">
+            <label>Student ID</label>
+            <input type="number" id="id">
+            </div>
 
-        <label>Last Name:</label>
-        <input type="text" id="lname" maxlength="255">
+            <div class="m-3">
+            <label>First Name:</label>
+            <input type="text" id="fname" maxlength="255">
+            </div>
 
-        <label>Expected graduation date</label>
-        <input type="date" id="egdate">
+            <div class="m-3">
+            <label>Last Name:</label>
+            <input type="text" id="lname" maxlength="255">
+            </div>
 
-        <label>Units in progress:</label>
-        <input type="number" id="unitsProgress">
+            <div class="m-3">
+            <label>Expected graduation date</label>
+            <input type="date" id="egdate">
+            </div>
 
-        <label>Units Completed</label>
-        <input type="date" id="unitsCompleted">
+            <div class="m-3">
+            <label>Units in progress:</label>
+            <input type="number" id="unitsProgress">
+            </div>
 
-        <label>Department</label>
-        <input list="departments" id="department">
-        <datalist id="departments">
-            <option value="Science">
-            <option value="Liberal Arts">
-            <option value="Engineering">
-        </datalist>
+            <div class="m-3">
+            <label>Units Completed</label>
+            <input type="date" id="unitsCompleted">
+            </div>
 
-        <label>Major</label>
-        <input list="majors" id="major">
-        <datalist id="majors">
-            <option value="Art">
-            <option value="Biology">
-            <option value="Computer Science">
-            <option value="Engineering">
-            <option value="English">
-            <option value="Mathematics">
-        </datalist>
+            <div class="m-3">
+            <label>Department</label>
+            <input list="departments" id="department">
+            <datalist id="departments">
+                <option value="Science">
+                <option value="Liberal Arts">
+                <option value="Engineering">
+            </datalist>
+            </div>
 
-        <input type="submit" id="postUpdate">
-    </fieldset>
-</form>
+            <div class="m-3">
+            <label>Major</label>
+            <input list="majors" id="major">
+            <datalist id="majors">
+                <option value="Art">
+                <option value="Biology">
+                <option value="Computer Science">
+                <option value="Engineering">
+                <option value="English">
+                <option value="Mathematics">
+            </datalist>
+            </div>
 
-<form>
-    <fieldset>
-        <legend>Search Students</legend>
+            <input type="submit" class="btn btn-primary m-3" id="postUpdate" value="Update">
+        </fieldset>
+    </form>
+</div>
 
-        <label>Student ID</label>
-        <input type="number" id="id">
+<div class="card container mt-3">
+    <form>
+        <fieldset>
+            <legend>Search Students</legend>
 
-        <label>First Name:</label>
-        <input type="text" id="fname" maxlength="255">
+            <div class="m-3">
+            <label>Student ID</label>
+            <input type="number" id="id">
+            </div>
 
-        <label>Last Name:</label>
-        <input type="text" id="lname" maxlength="255">
+            <div class="m-3">
+            <label>First Name:</label>
+            <input type="text" id="fname" maxlength="255">
+            </div>
 
-        <label>Expected graduation date</label>
-        <input type="date" id="egdate">
+            <div class="m-3">
+            <label>Last Name:</label>
+            <input type="text" id="lname" maxlength="255">
+            </div>
 
-        <label>Units in progress:</label>
-        <input type="number" id="unitsProgress">
+            <div class="m-3">
+            <label>Expected graduation date</label>
+            <input type="date" id="egdate">
+            </div>
 
-        <label>Units Completed</label>
-        <input type="date" id="unitsCompleted">
+            <div class="m-3">
+            <label>Units in progress:</label>
+            <input type="number" id="unitsProgress">
+            </div>
 
-        <label>Department</label>
-        <input list="departments" id="department">
-        <datalist id="departments">
-            <option value="Science">
-            <option value="Liberal Arts">
-            <option value="Engineering">
-        </datalist>
+            <div class="m-3">
+            <label>Units Completed</label>
+            <input type="date" id="unitsCompleted">
+            </div>
 
-        <label>Major</label>
-        <input list="majors" id="major">
-        <datalist id="majors">
-            <option value="Art">
-            <option value="Biology">
-            <option value="Computer Science">
-            <option value="Engineering">
-            <option value="English">
-            <option value="Mathematics">
-        </datalist>
+            <div class="m-3">
+            <label>Department</label>
+            <input list="departments" id="department">
+            <datalist id="departments">
+                <option value="Science">
+                <option value="Liberal Arts">
+                <option value="Engineering">
+            </datalist>
+            </div>
 
-        <input type="submit" id="postSearch">
-    </fieldset>
-</form>
+            <div class="m-3">
+            <label>Major</label>
+            <input list="majors" id="major">
+            <datalist id="majors">
+                <option value="Art">
+                <option value="Biology">
+                <option value="Computer Science">
+                <option value="Engineering">
+                <option value="English">
+                <option value="Mathematics">
+            </datalist>
+            </div>
 
-<table class="table">
-    <thead>
-        <tr>ID</tr>
-        <tr>First Name</tr>
-        <tr>Last Name</tr>
-        <tr>Expected Graduation Date</tr>
-        <tr>Units in Progress</tr>
-        <tr>Units completed</tr>
-        <tr>Department</tr>
-        <tr>Major</tr>
-    </thead>
-</table>
+            <input type="submit" class="btn btn-primary m-3" id="postSearch" value="Search">
+        </fieldset>
+    </form>
+</div>
+
+<div class="card container mt-3">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Expected Graduation Date</th>
+                <th>Units in Progress</th>
+                <th>Units completed</th>
+                <th>Department</th>
+                <th>Major</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>John</td>
+                <td>Smith</td>
+                <td>2022-01-01</td>
+                <td>12</td>
+                <td>36</td>
+                <td>Science</td>
+                <td>Biology</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
