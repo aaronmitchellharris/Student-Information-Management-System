@@ -41,6 +41,51 @@
     </form>
 </div>
 
+<div class="card container mt-3">
+    <form>
+        <fieldset>
+            <legend>Remove Course</legend>
+
+            <div class="m-3">
+                <label>Course ID</label>
+                <input type="number" class="form-control" id="id">
+            </div>
+
+            <div class="m-3">
+                <label>Course Name</label>
+                <input type="text" class="form-control" id="name" maxlength="255">
+            </div>
+
+            <div class="m-3">
+                <label>Units</label>
+                <input type="number" class="form-control" id="units">
+            </div>
+
+            <div class="m-3">
+                <label>Department</label>
+                <input list="departments" class="form-control" id="department">
+                <datalist id="departments">
+                    <option value="Science">
+                    <option value="Liberal Arts">
+                    <option value="Engineering">
+                </datalist>
+            </div>
+
+            <div class="m-3">
+                <label>Instructor</label>
+                <input list="instructors" class="form-control" id="instructor">
+                <datalist id="instructors">
+                    <option value="instructor 1">
+                    <option value="instructor 2">
+                    <option value="instructor 3">
+                </datalist>
+            </div>
+
+            <input type="submit" class="btn btn-primary m-3" id="postSubmit" value="Remove">
+        </fieldset>
+    </form>
+</div>
+
 <div class="card container mt-3 mb-3">
     <table class="table">
         <thead>
