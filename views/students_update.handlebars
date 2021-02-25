@@ -1,0 +1,69 @@
+<link rel="stylesheet" href="/css/students.css">
+<h1>Students</h1>
+
+<div class="card container mt-3">
+    <form>
+        <fieldset>
+            <legend>Update Student</legend>
+
+            <div class="m-3">
+                <label>Student ID</label>
+                <input type="number" class="form-control" id="id" min="1" value={{results.0.student_id}}>
+            </div>
+
+            <div class="m-3">
+                <label>First Name:</label>
+                <input type="text" class="form-control" id="fname" maxlength="255" value={{results.0.first_name}}>
+            </div>
+
+            <div class="m-3">
+                <label>Last Name:</label>
+                <input type="text" class="form-control" id="lname" maxlength="255" value={{results.0.last_name}}>
+            </div>
+
+            <div class="m-3">
+                <label>Expected graduation date</label>
+                <input type="date" class="form-control" id="egdate" value={{results.0.expected_graduation_date}}>
+            </div>
+
+            <div class="m-3">
+                <label>Units in progress:</label>
+                <input type="number" class="form-control" id="unitsProgress" min="0" value={{results.0.units_in_progress}}>
+            </div>
+
+            <div class="m-3">
+                <label>Units Completed</label>
+                <input type="number" class="form-control" id="unitsCompleted" min="0" value={{results.0.units_completed}}>
+            </div>
+
+            <div class="m-3">
+                <label>Department</label>
+                <input list="departments" class="form-control" id="department" value={{results.0.department_code}}>
+                <datalist id="departments">
+                    <option value="Science">
+                    <option value="Liberal Arts">
+                    <option value="Engineering">
+                    <option value="NULL">
+                </datalist>
+            </div>
+
+            <div class="m-3">
+                <label>Major</label>
+                <input list="majors" class="form-control" id="major" value={{results.0.major}}>
+                <datalist id="majors">
+                    <option value="Art">
+                    <option value="Biology">
+                    <option value="Computer Science">
+                    <option value="Engineering">
+                    <option value="English">
+                    <option value="Mathematics">
+                    <option value="Undeclared">
+                </datalist>
+            </div>
+
+            <input type="submit" class="btn btn-primary m-3" id="postUpdate" value="Update">
+        </fieldset>
+    </form>
+</div>
+
+<script src="/js/students_update.js"></script>
