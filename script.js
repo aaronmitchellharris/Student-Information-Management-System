@@ -86,6 +86,17 @@ app.post('/students', function(req,res,next){
             res.type('text/plain');
             res.send(context);
         });
+    }  else if (req.body.task == 'list'){
+        pool.query("SELECT DISTINCT department_code FROM departments",
+            [req.body.department], function(err, rows, result){
+                if(err){
+                    next(err);
+                    return;
+                }
+            context.results = JSON.stringify(rows);
+            res.type('text/plain');
+            res.send(context);
+        });
     } else {
         pool.query("SELECT student_id, department_code, first_name, last_name, FORMAT(expected_graduation_date, 'd', 'en-US') as expected_graduation_date, major, units_in_progress, units_completed FROM students", [req.body.id], function(err, rows, fields){
             if(err){
@@ -128,20 +139,132 @@ app.post('/students/update', function(req,res,next){
     });
 });
 
+app.get('/courses', function(req,res){
+    res.render('courses')
+});
+
+app.post('/courses', function(req,res,next){
+    var context = {}
+    if (req.body.task == 'insert'){
+        pool.query("INSERT INTO courses (instructor_id, department_code, name, units) VALUES (?, ?, ?, ?)",
+            [req.body.instructor, req.body.department, req.body.name, req.body.units], function(err, result){
+                if(err){
+                    next(err);
+                    return;
+                }
+        });
+        pool.query("UPDATE departments SET course_count = (SELECT COUNT(course_id) FROM courses WHERE department_code = ?) WHERE department_code = ?",
+            [req.body.department, req.body.department], function(err, result){
+                if(err){
+                    next(err);
+                    return;
+                }
+        });
+        
+    }
+
+    pool.query("SELECT CONCAT(instructors.first_name, ' ', instructors.last_name) as instructor_id, courses.department_code, courses.name, courses.units, courses.course_id FROM courses INNER JOIN instructors ON courses.instructor_id = instructors.instructor_id", [req.body.id], function(err, rows, fields){
+        if(err){
+            next(err);
+            return;
+        }
+        context.results = JSON.stringify(rows);
+        res.type('text/plain');
+        res.send(context);
+    });
+});
+
 app.get('/instructors', function(req,res){
     res.render('instructors')
 });
 
-app.get('/courses', function(req,res){
-    res.render('courses')
+app.post('/instructors', function(req,res,next){
+    var context = {}
+    if (req.body.task == 'insert'){
+        pool.query("INSERT INTO instructors (department_code, first_name, last_name) VALUES (?, ?, ?)",
+            [req.body.department, req.body.fname, req.body.lname], function(err, result){
+                if(err){
+                    next(err);
+                    return;
+                }
+        });
+        pool.query("UPDATE departments SET instructor_count = (SELECT COUNT(instructor_id) FROM instructors WHERE department_code = ?) WHERE department_code = ?",
+            [req.body.department, req.body.department], function(err, result){
+                if(err){
+                    next(err);
+                    return;
+                }
+        });
+        
+    }
+
+    pool.query("SELECT * FROM instructors", [req.body.id], function(err, rows, fields){
+        if(err){
+            next(err);
+            return;
+        }
+        context.results = JSON.stringify(rows);
+        res.type('text/plain');
+        res.send(context);
+    });
+
 });
 
 app.get('/departments', function(req,res){
     res.render('departments')
 });
 
+app.post('/departments', function(req,res,next){
+    var context = {}
+    if (req.body.task == 'insert'){
+        pool.query("INSERT INTO departments (department_code, name, instructor_count, course_count) VALUES (?, ?, 0, 0)",
+            [req.body.department, req.body.name], function(err, result){
+                if(err){
+                    next(err);
+                    return;
+                }
+        });
+        
+    }
+
+    pool.query("SELECT * FROM departments", [req.body.id], function(err, rows, fields){
+        if(err){
+            next(err);
+            return;
+        }
+        context.results = JSON.stringify(rows);
+        res.type('text/plain');
+        res.send(context);
+    });
+
+});
+
 app.get('/students_courses', function(req,res){
     res.render('students_courses')
+});
+
+app.post('/students_courses', function(req,res,next){
+    var context = {}
+    if (req.body.task == 'insert'){
+        pool.query("INSERT INTO students_courses (student_id, course_id, grade) VALUES (?, ?, 'In Progress')",
+            [req.body.sid, req.body.cid], function(err, result){
+                if(err){
+                    next(err);
+                    return;
+                }
+        });
+        
+    }
+    pool.query("SELECT * FROM students_courses", [req.body.id], function(err, rows, fields){
+        if(err){
+            next(err);
+            return;
+        }
+        context.results = JSON.stringify(rows);
+        res.type('text/plain');
+        res.send(context);
+    });
+
 });
 
 app.use(function(req,res){

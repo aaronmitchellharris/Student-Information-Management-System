@@ -31,42 +31,7 @@
     </form>
 </div>
 
-<div class="card container mt-3">
-    <form>
-        <fieldset>
-            <legend>Remove Instructor</legend>
-
-            <div class="m-3">
-                <label>Instructor ID</label>
-                <input type="number" class="form-control" id="id" min="1">
-            </div>
-
-            <div class="m-3">
-                <label>First Name:</label>
-                <input type="text" class="form-control" id="fname" maxlength="255">
-            </div>
-
-            <div class="m-3">
-                <label>Last Name:</label>
-                <input type="text" class="form-control" id="lname" maxlength="255">
-            </div>
-
-            <div class="m-3">
-                <label>Department</label>
-                <input list="departments" class="form-control" id="department">
-                <datalist id="departments">
-                    <option value="Science">
-                    <option value="Liberal Arts">
-                    <option value="Engineering">
-                </datalist>
-            </div>
-
-            <input type="submit" class="btn btn-primary m-3" id="postRemove" value="Remove">
-        </fieldset>
-    </form>
-</div>
-
-<div class="card container mt-3 mb-3">
+<div id="table" class="card container mt-3 mb-3">
     <table class="table">
         <thead>
             <tr>
@@ -77,24 +42,8 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>1</td>
-                <td>Instructor</td>
-                <td>1</td>
-                <td>Liberal Arts</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Instructor</td>
-                <td>2</td>
-                <td>Science</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Instructor</td>
-                <td>3</td>
-                <td>Engineering</td>
-            </tr>
         </tbody>
     </table>
 </div>
+
+<script src="/js/instructors.js"></script>

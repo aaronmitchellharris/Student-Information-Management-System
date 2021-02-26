@@ -77,6 +77,32 @@ function bindButtons(){
     document.getElementById('postSearch').addEventListener('click', search);
 };
 
+function buildList(){
+    var req = new XMLHttpRequest();
+    var payload = {task:'list'};
+    req.open('POST', 'http://flip3.engr.oregonstate.edu:5556/students' , true);
+    req.setRequestHeader('Content-Type', 'application/json');
+    req.send(JSON.stringify(payload));
+    req.addEventListener('load', function(){
+        if(req.status >= 200 && req.status < 400){
+            var response = JSON.parse(req.responseText);
+            response.results = JSON.parse(response.results);
+            
+            var lists = document.getElementsByClassName("departments");
+            for (var i = 0; i < response.results.length; i++){
+            
+                var current = document.createElement("option");
+                current.value = response.results[i].department_code;
+                var t = document.createTextNode(response.results[i].department_code);
+                current.appendChild(t);
+                for (var j = 0; j < lists.length; j++){
+                    lists[j].appendChild(current);
+                }
+            }  
+        }
+    });
+};
+
 function initial(){
     var req = new XMLHttpRequest();
     var payload = {task:'initial'};
@@ -91,6 +117,7 @@ function initial(){
         }
     });
 };
+buildList();
 initial();
 
 function buildTable(tableInfo){

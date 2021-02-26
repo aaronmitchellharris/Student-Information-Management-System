@@ -16,78 +16,12 @@
                 <input type="number" class="form-control" id="cid" min="1">
             </div>
 
-            <div class="m-3">
-                <label>Grade</label>
-                <input list="grades" class="form-control" id="grade">
-                <datalist id="grades">
-                    <option value="IP">
-                    <option value="A">
-                    <option value="B">
-                    <option value="C">
-                    <option value="D">
-                    <option value="F">
-                </datalist>
-            </div>
-
             <input type="submit" id="postSubmit" class="btn btn-primary m-3" value="Connect">
         </fieldset>
     </form>
 </div>
 
-<div class="card container mt-3">
-    <form>
-        <fieldset>
-            <legend>Remove Student Course Relationship</legend>
-
-            <div class="m-3">
-                <label>Student ID</label>
-                <input type="number" class="form-control" id="sid" min="1">
-            </div>
-
-            <div class="m-3">
-                <label>Course ID</label>
-                <input type="number" class="form-control" id="cid" min="1">
-            </div>
-
-            <input type="submit" id="postRemove" class="btn btn-primary m-3" value="Remove">
-        </fieldset>
-    </form>
-</div>
-
-<div class="card container mt-3">
-    <form>
-        <fieldset>
-            <legend>Update a Student's Grade in a Course</legend>
-
-            <div class="m-3">
-                <label class="form-label">Student ID</label>
-                <input type="number" class="form-control" id="sid" min="1">
-            </div>
-
-            <div class="m-3">
-                <label>Course ID</label>
-                <input type="number" class="form-control" id="cid" min="1">
-            </div>
-
-            <div class="m-3">
-                <label>Grade</label>
-                <input list="grades" class="form-control" id="grade">
-                <datalist id="grades">
-                    <option value="IP">
-                    <option value="A">
-                    <option value="B">
-                    <option value="C">
-                    <option value="D">
-                    <option value="F">
-                </datalist>
-            </div>
-
-            <input type="submit" id="postSubmit" class="btn btn-primary m-3" value="Update">
-        </fieldset>
-    </form>
-</div>
-
-<div class="card container mt-3 mb-3">
+<div id="table" class="card container mt-3 mb-3">
     <table class="table">
         <thead>
             <tr>
@@ -97,11 +31,8 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>123</td>
-                <td>456</td>
-                <td>A</td>
-            </tr>
         </tbody>
     </table>
 </div>
+
+<script src="/js/students_courses.js"></script>
