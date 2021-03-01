@@ -25,7 +25,17 @@ app.get('/', function(req,res){
 });
 
 app.get('/students', function(req,res){
-    res.render('students');
+    var context = {};
+    data = [];
+    pool.query("SELECT * FROM departments",
+        [req.query], function(err, rows, fields){
+        if(err){
+            next(err);
+            return;
+        }
+        context.results = rows
+        res.render('students', context);
+    });
 });
 
 app.post('/students', function(req,res,next){

@@ -36,21 +36,15 @@
                 <label>Department</label>
                 <input list="departments" class="form-control" id="department">
                 <datalist class="departments" id="departments">
+                {{#each results}}
+                    <option value="{{department_code}}">{{name}}</option>
+                {{/each}}
                 </datalist>
             </div>
 
             <div class="m-3">
                 <label>Major</label>
-                <input list="majors" class="form-control" id="major">
-                <datalist id="majors">
-                    <option value="Art">
-                    <option value="Biology">
-                    <option value="Computer Science">
-                    <option value="Engineering">
-                    <option value="English">
-                    <option value="Mathematics">
-                    <option value="Undeclared">
-                </datalist>
+                <input type="text" class="form-control" id="major" maxlength="255">
             </div>
 
             <input type="submit" class="btn btn-primary m-3" id="postSubmit" value="Add">
@@ -79,21 +73,15 @@
             <label>Department</label>
             <input list="departments" class="form-control" id="departmentSearch">
             <datalist class="departments" id="departments">
+            {{#each results}}
+                <option value="{{department_code}}">{{name}}</option>
+            {{/each}}
             </datalist>
             </div>
 
             <div class="m-3">
             <label>Major</label>
-            <input list="majors" class="form-control" id="majorSearch">
-            <datalist id="majors">
-                <option value="Art">
-                <option value="Biology">
-                <option value="Computer Science">
-                <option value="Engineering">
-                <option value="English">
-                <option value="Mathematics">
-                <option value="Undeclared">
-            </datalist>
+            <input type="text" class="form-control" id="majorSearch" maxlength="255">
             </div>
 
             <input type="submit" class="btn btn-primary m-3" id="postSearch" value="Search">
