@@ -40,25 +40,15 @@
                 <label>Department</label>
                 <input list="departments" class="form-control" id="department" value={{results.0.department_code}}>
                 <datalist id="departments">
-                    <option value="Science">
-                    <option value="Liberal Arts">
-                    <option value="Engineering">
-                    <option value="NULL">
+                {{#each departments}}
+                    <option value="{{department_code}}">{{name}}</option>
+                {{/each}}
                 </datalist>
             </div>
 
             <div class="m-3">
                 <label>Major</label>
-                <input list="majors" class="form-control" id="major" value={{results.0.major}}>
-                <datalist id="majors">
-                    <option value="Art">
-                    <option value="Biology">
-                    <option value="Computer Science">
-                    <option value="Engineering">
-                    <option value="English">
-                    <option value="Mathematics">
-                    <option value="Undeclared">
-                </datalist>
+                <input type="text" class="form-control" id="major" value={{results.0.major}}>
             </div>
 
             <input type="submit" class="btn btn-primary m-3" id="postUpdate" value="Update">
