@@ -20,9 +20,9 @@
                 <label>Department</label>
                 <input list="departments" class="form-control" id="department">
                 <datalist id="departments">
-                    <option value="Science">
-                    <option value="Liberal Arts">
-                    <option value="Engineering">
+                {{#each results}}
+                    <option value="{{department_code}}">{{name}}</option>
+                {{/each}}
                 </datalist>
             </div>
 

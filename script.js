@@ -158,7 +158,24 @@ app.post('/students/update', function(req,res,next){
 });
 
 app.get('/courses', function(req,res){
-    res.render('courses')
+    var context = {};
+    pool.query("SELECT * FROM departments",
+        [req.query], function(err, rows, fields){
+        if(err){
+            next(err);
+            return;
+        }
+        context.results = rows
+        pool.query("SELECT * FROM instructors",
+        [req.query], function(err, rows, fields){
+        if(err){
+            next(err);
+            return;
+        }
+        context.instructors = rows
+        res.render('courses', context);
+    });
+    });
 });
 
 app.post('/courses', function(req,res,next){
@@ -193,7 +210,16 @@ app.post('/courses', function(req,res,next){
 });
 
 app.get('/instructors', function(req,res){
-    res.render('instructors')
+    var context = {};
+    pool.query("SELECT * FROM departments",
+        [req.query], function(err, rows, fields){
+        if(err){
+            next(err);
+            return;
+        }
+        context.results = rows
+        res.render('instructors', context);
+    });
 });
 
 app.post('/instructors', function(req,res,next){

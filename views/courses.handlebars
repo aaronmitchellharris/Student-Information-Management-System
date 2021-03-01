@@ -20,9 +20,9 @@
                 <label>Department</label>
                 <input list="departments" class="form-control" id="department">
                 <datalist id="departments">
-                    <option value="Science">
-                    <option value="Liberal Arts">
-                    <option value="Engineering">
+                {{#each results}}
+                    <option value="{{department_code}}">{{name}}</option>
+                {{/each}}
                 </datalist>
             </div>
 
@@ -30,9 +30,9 @@
                 <label>Instructor</label>
                 <input list="instructors" class="form-control" id="instructor">
                 <datalist id="instructors">
-                    <option value="instructor 1">
-                    <option value="instructor 2">
-                    <option value="instructor 3">
+                {{#each instructors}}
+                    <option value="{{instructor_id}}">{{first_name}} {{last_name}}</option>
+                {{/each}}
                 </datalist>
             </div>
 
