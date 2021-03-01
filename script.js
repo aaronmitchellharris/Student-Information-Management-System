@@ -284,7 +284,24 @@ app.post('/departments', function(req,res,next){
 });
 
 app.get('/students_courses', function(req,res){
-    res.render('students_courses')
+    var context = {}
+    pool.query("SELECT * FROM students",
+        [req.query], function(err, rows, fields){
+        if(err){
+            next(err);
+            return;
+        }
+        context.students = rows
+        pool.query("SELECT * FROM courses",
+        [req.query], function(err, rows, fields){
+        if(err){
+            next(err);
+            return;
+        }
+        context.courses = rows
+        res.render('students_courses', context);
+        });
+    });
 });
 
 app.post('/students_courses', function(req,res,next){
