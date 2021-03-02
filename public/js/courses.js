@@ -33,8 +33,32 @@ function submit(event){
     event.preventDefault();
 };
 
+function deleteCourse(event){
+     
+    var req = new XMLHttpRequest();
+    var payload = {task:'delete', id:null,};
+    payload.id = event.target.previousSibling.value;
+
+    req.open('POST', 'http://flip3.engr.oregonstate.edu:5556/courses' , true);
+    req.setRequestHeader('Content-Type', 'application/json');
+    req.send(JSON.stringify(payload));
+    req.addEventListener('load', function(){
+        if(req.status >= 200 && req.status < 400){
+            var response = JSON.parse(req.responseText);
+            response.results = JSON.parse(response.results);
+            buildTable(response);
+        }
+    });
+
+    event.preventDefault();
+};
+
 function bindButtons(){
     document.getElementById('postSubmit').addEventListener('click', submit);
+    var deleteButtons = document.getElementsByClassName('delete');
+    for (var i = 0; i < deleteButtons.length; i++){
+        deleteButtons[i].addEventListener('click', deleteCourse);
+    }
 };
 
 function initial(){

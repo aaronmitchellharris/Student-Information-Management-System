@@ -196,6 +196,13 @@ app.post('/courses', function(req,res,next){
                 }
         });
         
+    } else if (req.body.task == 'delete'){
+        pool.query("DELETE FROM courses WHERE course_id = ?", [req.body.id], function(err, result){
+            if(err){
+                next(err);
+                return;
+            }
+        });
     }
 
     pool.query("SELECT CONCAT(instructors.first_name, ' ', instructors.last_name) as instructor_id, courses.department_code, courses.name, courses.units, courses.course_id FROM courses INNER JOIN instructors ON courses.instructor_id = instructors.instructor_id", [req.body.id], function(err, rows, fields){
@@ -240,6 +247,13 @@ app.post('/instructors', function(req,res,next){
                 }
         });
         
+    } else if (req.body.task == 'delete'){
+        pool.query("DELETE FROM instructors WHERE instructor_id = ?", [req.body.id], function(err, result){
+            if(err){
+                next(err);
+                return;
+            }
+        });
     }
 
     pool.query("SELECT * FROM instructors", [req.body.id], function(err, rows, fields){
@@ -315,6 +329,13 @@ app.post('/students_courses', function(req,res,next){
                 }
         });
         
+    } else if (req.body.task == 'delete'){
+        pool.query("DELETE FROM students_courses WHERE student_id = ? AND course_id = ?", [req.body.sid, req.body.cid], function(err, result){
+            if(err){
+                next(err);
+                return;
+            }
+        });
     }
     pool.query("SELECT * FROM students_courses", [req.body.id], function(err, rows, fields){
         if(err){

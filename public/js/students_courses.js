@@ -27,8 +27,33 @@ function submit(event){
     event.preventDefault();
 };
 
+function deleteStudentCourse(event){
+     
+    var req = new XMLHttpRequest();
+    var payload = {task:'delete', sid:null, cid:null};
+    payload.sid = event.target.previousSibling.value;
+    payload.cid = event.target.previousSibling.previousSibling.value;
+
+    req.open('POST', 'http://flip3.engr.oregonstate.edu:5556/students_courses' , true);
+    req.setRequestHeader('Content-Type', 'application/json');
+    req.send(JSON.stringify(payload));
+    req.addEventListener('load', function(){
+        if(req.status >= 200 && req.status < 400){
+            var response = JSON.parse(req.responseText);
+            response.results = JSON.parse(response.results);
+            buildTable(response);
+        }
+    });
+
+    event.preventDefault();
+};
+
 function bindButtons(){
     document.getElementById('postSubmit').addEventListener('click', submit);
+    var deleteButtons = document.getElementsByClassName('delete');
+    for (var i = 0; i < deleteButtons.length; i++){
+        deleteButtons[i].addEventListener('click', deleteStudentCourse);
+    }
 };
 
 function initial(){
@@ -99,13 +124,17 @@ function buildTable(tableInfo){
         var deleteTd = document.createElement("td");
         var deleteForm = document.createElement("form");
         var deleteId = document.createElement("input");
+        var deleteId2 = document.createElement("input");
         deleteId.type = "hidden";
+        deleteId2.type = "hidden";
         deleteId.value = tableInfo.results[i].course_id;
+        deleteId2.value = tableInfo.results[i].student_id
         var deleteSubmit = document.createElement("input");
         deleteSubmit.type = "submit";
         deleteSubmit.value = "Delete";
         deleteSubmit.className += "delete btn btn-danger";
         deleteForm.appendChild(deleteId);
+        deleteForm.appendChild(deleteId2);
         deleteForm.appendChild(deleteSubmit);
         deleteTd.appendChild(deleteForm);
 
