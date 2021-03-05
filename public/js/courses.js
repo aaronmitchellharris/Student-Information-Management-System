@@ -11,7 +11,7 @@ function submit(event){
         payload.department = document.getElementById('department').value;
         payload.units = document.getElementById('units').value;
 
-        req.open('POST', 'http://flip3.engr.oregonstate.edu:5556/courses' , true);
+        req.open('POST', 'http://flip3.engr.oregonstate.edu:5550/courses' , true);
         req.setRequestHeader('Content-Type', 'application/json');
         req.send(JSON.stringify(payload));
         req.addEventListener('load', function(){
@@ -39,7 +39,7 @@ function deleteCourse(event){
     var payload = {task:'delete', id:null,};
     payload.id = event.target.previousSibling.value;
 
-    req.open('POST', 'http://flip3.engr.oregonstate.edu:5556/courses' , true);
+    req.open('POST', 'http://flip3.engr.oregonstate.edu:5550/courses' , true);
     req.setRequestHeader('Content-Type', 'application/json');
     req.send(JSON.stringify(payload));
     req.addEventListener('load', function(){
@@ -64,7 +64,7 @@ function bindButtons(){
 function initial(){
     var req = new XMLHttpRequest();
     var payload = {task:'initial'};
-    req.open('POST', 'http://flip3.engr.oregonstate.edu:5556/courses' , true);
+    req.open('POST', 'http://flip3.engr.oregonstate.edu:5550/courses' , true);
     req.setRequestHeader('Content-Type', 'application/json');
     req.send(JSON.stringify(payload));
     req.addEventListener('load', function(){

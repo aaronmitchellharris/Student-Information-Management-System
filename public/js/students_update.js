@@ -1,5 +1,6 @@
 function submit(event){
-    if ((document.getElementById('fname').value != "") && 
+    if ((document.getElementById('id').value != "") &&
+        (document.getElementById('fname').value != "") && 
         (document.getElementById('lname').value != "") &&
         (document.getElementById('major').value != "") &&
         (document.getElementById('egdate').value != "") &&
@@ -8,7 +9,8 @@ function submit(event){
         (document.getElementById('unitsCompleted').value != "")){
         
         var req = new XMLHttpRequest();
-        var payload = {task:'update', fname:null, lname:null, egdate:null, department:null, major:null, unitsCompleted:null, unitsProgress:null};
+        var payload = {task:'update', id:null, fname:null, lname:null, egdate:null, department:null, major:null, unitsCompleted:null, unitsProgress:null};
+        payload.id = document.getElementById('id').value;
         payload.fname = document.getElementById('fname').value;
         payload.lname = document.getElementById('lname').value;
         payload.egdate = document.getElementById('egdate').value;
@@ -17,13 +19,14 @@ function submit(event){
         payload.unitsCompleted = document.getElementById('unitsCompleted').value;
         payload.unitsProgress = document.getElementById('unitsProgress').value;
 
-        req.open('POST', 'http://flip3.engr.oregonstate.edu:5556/students/update' , true);
+        req.open('POST', 'http://flip3.engr.oregonstate.edu:5550/students/update' , true);
         req.setRequestHeader('Content-Type', 'application/json');
         req.send(JSON.stringify(payload));
         req.addEventListener('load', function(){
             if(req.status >= 200 && req.status < 400){
+                console.log(req.responseText);
                 var response = JSON.parse(req.responseText);
-                response.results = JSON.parse(response.results);
+                
             }
         });
 

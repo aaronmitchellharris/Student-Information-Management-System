@@ -7,7 +7,7 @@ function submit(event){
         payload.name = document.getElementById('name').value;
         payload.department = document.getElementById('code').value;
 
-        req.open('POST', 'http://flip3.engr.oregonstate.edu:5556/departments' , true);
+        req.open('POST', 'http://flip3.engr.oregonstate.edu:5550/departments' , true);
         req.setRequestHeader('Content-Type', 'application/json');
         req.send(JSON.stringify(payload));
         req.addEventListener('load', function(){
@@ -34,7 +34,7 @@ function bindButtons(){
 function initial(){
     var req = new XMLHttpRequest();
     var payload = {task:'initial'};
-    req.open('POST', 'http://flip3.engr.oregonstate.edu:5556/departments' , true);
+    req.open('POST', 'http://flip3.engr.oregonstate.edu:5550/departments' , true);
     req.setRequestHeader('Content-Type', 'application/json');
     req.send(JSON.stringify(payload));
     req.addEventListener('load', function(){

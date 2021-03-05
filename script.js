@@ -147,34 +147,14 @@ app.get('/students/update', function(req,res){
 
 app.post('/students/update', function(req,res,next){
     var context = {}
-    pool.query("UPDATE students SET department_code = ?, first_name = ?, last_name = ?, expected_graduation_date = ?, major = ?, units_in_progress = ?, units_completed = ? WHERE student_id = :?;", 
+    pool.query("UPDATE students SET department_code = ?, first_name = ?, last_name = ?, expected_graduation_date = ?, major = ?, units_in_progress = ?, units_completed = ? WHERE student_id = ?", 
     [req.body.department, req.body.fname, req.body.lname, req.body.egdate, req.body.major, req.body.unitsProgress, req.body.unitsCompleted, req.body.id], function(err, rows, fields){
         if(err){
             next(err);
             return;
         }
-    });
-    
-    pool.query("SELECT student_id, department_code, first_name, last_name, FORMAT(expected_graduation_date, 'd', 'en-US') as expected_graduation_date, major, units_in_progress, units_completed FROM students WHERE student_id = ?", [req.query.id], function(err, rows, fields){
-        if(err){
-            next(err);
-            return;
-        }
-        context.results = rows;
-
-        var date = context.results[0]['expected_graduation_date']
-        date = date.charAt(0)+date.charAt(1)+date.charAt(3)+date.charAt(4)+"-"+date.charAt(5)+date.charAt(7)+"-"+date.charAt(8)+date.charAt(9)
-        context.results[0]['expected_graduation_date'] = date
-        
-        pool.query("SELECT * FROM departments",
-        [req.query], function(err, rows, fields){
-        if(err){
-            next(err);
-            return;
-        }
-        context.departments = rows
-        res.render('students_update', context);
-        });   
+        res.type('text/plain');
+        res.send(context);
     });
 });
 
