@@ -20,10 +20,12 @@ app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 app.set('port', process.argv[2]);
 
+// home page
 app.get('/', function(req,res){
     res.render('home')
 });
 
+// students page
 app.get('/students', function(req,res){
     var context = {};
     pool.query("SELECT * FROM departments",
@@ -37,8 +39,10 @@ app.get('/students', function(req,res){
     });
 });
 
+// receive students post requests
 app.post('/students', function(req,res,next){
     var context = {}
+    // CREATE operation
     if (req.body.task == 'insert'){
         if (req.body.department == 'NULL' || req.body.department == ''){
             if (req.body.major == ''){
@@ -79,6 +83,7 @@ app.post('/students', function(req,res,next){
         }
     }
 
+    // READ operation
     if (req.body.task == 'search'){
         var searchQuery = "SELECT student_id, department_code, first_name, last_name, FORMAT(expected_graduation_date, 'd', 'en-US') as expected_graduation_date, major, units_in_progress, units_completed FROM students \
         WHERE";
@@ -152,6 +157,7 @@ app.post('/students', function(req,res,next){
     }
 });
 
+// students update page
 app.get('/students/update', function(req,res){
     var context = {}
     pool.query("SELECT student_id, department_code, first_name, last_name, FORMAT(expected_graduation_date, 'd', 'en-US') as expected_graduation_date, major, units_in_progress, units_completed FROM students WHERE student_id = ?", [req.query.id], function(err, rows, fields){
@@ -178,8 +184,10 @@ app.get('/students/update', function(req,res){
     });
 });
 
+// receive students update post requests
 app.post('/students/update', function(req,res,next){
     var context = {}
+    // UPDATE operation
     pool.query("UPDATE students SET department_code = ?, first_name = ?, last_name = ?, expected_graduation_date = ?, major = ?, units_in_progress = ?, units_completed = ? WHERE student_id = ?", 
     [req.body.department, req.body.fname, req.body.lname, req.body.egdate, req.body.major, req.body.unitsProgress, req.body.unitsCompleted, req.body.id], function(err, result){
         if(err){
@@ -192,6 +200,7 @@ app.post('/students/update', function(req,res,next){
     });
 });
 
+// courses page
 app.get('/courses', function(req,res){
     var context = {};
     pool.query("SELECT * FROM departments",
@@ -213,8 +222,10 @@ app.get('/courses', function(req,res){
     });
 });
 
+// receive courses post requests
 app.post('/courses', function(req,res,next){
     var context = {}
+    // CREATE operation
     if (req.body.task == 'insert'){
         pool.query("INSERT INTO courses (instructor_id, department_code, name, units) VALUES (?, ?, ?, ?)",
             [req.body.instructor, req.body.department, req.body.name, req.body.units], function(err, result){
@@ -230,7 +241,7 @@ app.post('/courses', function(req,res,next){
                     return;
                 }
         });
-        
+    // DELETE operation    
     } else if (req.body.task == 'delete'){
         pool.query("DELETE FROM courses WHERE course_id = ?", [req.body.id], function(err, result){
             if(err){
@@ -246,7 +257,7 @@ app.post('/courses', function(req,res,next){
                 }
         });
     }
-
+    // READ operation
     pool.query("SELECT CONCAT(instructors.first_name, ' ', instructors.last_name) as instructor_id, courses.department_code, courses.name, courses.units, courses.course_id FROM courses INNER JOIN instructors ON courses.instructor_id = instructors.instructor_id", [req.body.id], function(err, rows, fields){
         if(err){
             next(err);
@@ -258,6 +269,7 @@ app.post('/courses', function(req,res,next){
     });
 });
 
+// instructors page
 app.get('/instructors', function(req,res){
     var context = {};
     pool.query("SELECT * FROM departments",
@@ -271,8 +283,10 @@ app.get('/instructors', function(req,res){
     });
 });
 
+// receive instructors post requests
 app.post('/instructors', function(req,res,next){
     var context = {}
+    // CREATE operation
     if (req.body.task == 'insert'){
         pool.query("INSERT INTO instructors (department_code, first_name, last_name) VALUES (?, ?, ?)",
             [req.body.department, req.body.fname, req.body.lname], function(err, result){
@@ -288,7 +302,7 @@ app.post('/instructors', function(req,res,next){
                     return;
                 }
         });
-        
+    // DELETE operation
     } else if (req.body.task == 'delete'){
         pool.query("DELETE FROM instructors WHERE instructor_id = ?", [req.body.id], function(err, result){
             if(err){
@@ -304,7 +318,7 @@ app.post('/instructors', function(req,res,next){
                 }
         });
     }
-
+    // READ operation
     pool.query("SELECT * FROM instructors", [req.body.id], function(err, rows, fields){
         if(err){
             next(err);
@@ -317,12 +331,15 @@ app.post('/instructors', function(req,res,next){
 
 });
 
+// departments page
 app.get('/departments', function(req,res){
     res.render('departments')
 });
 
+// receive departments post requests
 app.post('/departments', function(req,res,next){
     var context = {}
+    // CREATE operation
     if (req.body.task == 'insert'){
         pool.query("INSERT INTO departments (department_code, name, instructor_count, course_count) VALUES (?, ?, 0, 0)",
             [req.body.department, req.body.name], function(err, result){
@@ -333,7 +350,7 @@ app.post('/departments', function(req,res,next){
         });
         
     }
-
+    // READ operation
     pool.query("SELECT * FROM departments", [req.body.id], function(err, rows, fields){
         if(err){
             next(err);
@@ -346,6 +363,7 @@ app.post('/departments', function(req,res,next){
 
 });
 
+// students_courses page
 app.get('/students_courses', function(req,res){
     var context = {}
     pool.query("SELECT * FROM students",
@@ -367,8 +385,10 @@ app.get('/students_courses', function(req,res){
     });
 });
 
+// receive students_courses post operations
 app.post('/students_courses', function(req,res,next){
     var context = {}
+    // CREATE operation
     if (req.body.task == 'insert'){
         pool.query("INSERT INTO students_courses (student_id, course_id, grade) VALUES (?, ?, 'In-Progress')",
             [req.body.sid, req.body.cid], function(err, result){
@@ -377,7 +397,7 @@ app.post('/students_courses', function(req,res,next){
                     return;
                 }
         });
-        
+    // DELETE operation
     } else if (req.body.task == 'delete'){
         pool.query("DELETE FROM students_courses WHERE student_id = ? AND course_id = ?", [req.body.sid, req.body.cid], function(err, result){
             if(err){
@@ -386,6 +406,7 @@ app.post('/students_courses', function(req,res,next){
             }
         });
     }
+    // READ operation
     pool.query("SELECT * FROM students_courses", [req.body.id], function(err, rows, fields){
         if(err){
             next(err);
@@ -398,6 +419,7 @@ app.post('/students_courses', function(req,res,next){
 
 });
 
+// students_courses update page
 app.get('/students_courses/update', function(req,res){
     var context = {}
     pool.query("SELECT grade FROM students_courses WHERE student_id = ? AND course_id = ?",
@@ -413,8 +435,10 @@ app.get('/students_courses/update', function(req,res){
     });
 });
 
+// receive students_courses update post requests
 app.post('/students_courses/update', function(req,res,next){
     var context = {}
+    // UPDATE operation
     pool.query("UPDATE students_courses SET grade = ? WHERE student_id = ? AND course_id = ?", 
     [req.body.grade, req.body.sid, req.body.cid], function(err, result){
         if(err){

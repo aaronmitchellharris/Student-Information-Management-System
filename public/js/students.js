@@ -1,3 +1,4 @@
+// CREATE operation POST request
 function submit(event){
     if ((document.getElementById('fname').value != "") && 
         (document.getElementById('lname').value != "") &&
@@ -40,6 +41,7 @@ function submit(event){
     event.preventDefault();
 };
 
+// READ operation POST request
 function search(event){
     if ((document.getElementById('fnameSearch').value != "") |
         (document.getElementById('lnameSearch').value != "") |
@@ -101,6 +103,7 @@ function buildList(){
     });
 };
 
+// initial POST request
 function initial(){
     var req = new XMLHttpRequest();
     var payload = {task:'initial'};
@@ -117,6 +120,8 @@ function initial(){
 };
 buildList();
 initial();
+
+// builds table with POST response
 function buildTable(tableInfo){
     document.getElementsByTagName("table")[0].remove();
     var table = document.createElement("table");

@@ -1,3 +1,4 @@
+// UPDATE operation POST request
 function submit(event){
     if ((document.getElementById('sid').value != "") && 
         (document.getElementById('cid').value != "") &&

@@ -1,3 +1,4 @@
+// CREATE operation POST request
 function submit(event){
     if ((document.getElementById('id').value != "") &&
         (document.getElementById('fname').value != "") && 

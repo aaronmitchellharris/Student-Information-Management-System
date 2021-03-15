@@ -1,3 +1,4 @@
+// CREATE operation POST request
 function submit(event){
     if ((document.getElementById('code').value != "") && 
         (document.getElementById('name').value != "")){
@@ -31,6 +32,7 @@ function bindButtons(){
     document.getElementById('postSubmit').addEventListener('click', submit);
 };
 
+// initial POST request
 function initial(){
     var req = new XMLHttpRequest();
     var payload = {task:'initial'};
@@ -47,6 +49,7 @@ function initial(){
 };
 initial();
 
+// builds table with POST response
 function buildTable(tableInfo){
     document.getElementsByTagName("table")[0].remove();
     var table = document.createElement("table");

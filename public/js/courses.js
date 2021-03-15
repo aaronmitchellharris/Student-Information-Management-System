@@ -1,3 +1,4 @@
+// CREATE operation POST request
 function submit(event){
     if ((document.getElementById('name').value != "") && 
         (document.getElementById('instructor').value != "") &&
@@ -33,6 +34,7 @@ function submit(event){
     event.preventDefault();
 };
 
+// DELETE operation POST request
 function deleteCourse(event){
      
     var req = new XMLHttpRequest();
@@ -63,6 +65,7 @@ function bindButtons(){
     }
 };
 
+// initial POST request
 function initial(){
     var req = new XMLHttpRequest();
     var payload = {task:'initial'};
@@ -79,6 +82,7 @@ function initial(){
 };
 initial();
 
+// builds table with POST response
 function buildTable(tableInfo){
     document.getElementsByTagName("table")[0].remove();
     var table = document.createElement("table");
