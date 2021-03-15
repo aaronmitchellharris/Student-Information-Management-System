@@ -1,0 +1,31 @@
+<link rel="stylesheet" href="/css/students_courses_update.css">
+<h1>Update Students and Courses</h1>
+
+<div class="card container mt-3">
+    <form>
+        <fieldset>
+            <legend>Update a Student's grade in a Course</legend>
+
+            <div class="m-3">
+                <label class="form-label">Student</label>
+                <input type="text" class="form-control" id="sid" value="{{sid}}" readonly>
+                </datalist>
+            </div>
+
+            <div class="m-3">
+                <label>Course</label>
+                <input type="text" class="form-control" id="cid" value="{{cid}}" readonly>
+                </datalist>
+            </div>
+
+            <div class="m-3">
+                <label class="form-label">Grade</label>
+                <input type="text" class="form-control" id="grade" value={{results.0.grade}}>
+            </div>
+
+            <input type="submit" id="postUpdate" class="btn btn-primary m-3" value="Update">
+        </fieldset>
+    </form>
+</div>
+
+<script src="/js/students_courses_update.js"></script>

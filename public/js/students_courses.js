@@ -22,9 +22,10 @@ function submit(event){
         document.getElementById('cid').value = "";
 
     } else {
-        console.log("Error: Info Missing");
+        alert("Error: Info Missing");
     };
     event.preventDefault();
+    location.reload();
 };
 
 function deleteStudentCourse(event){
@@ -46,6 +47,7 @@ function deleteStudentCourse(event){
     });
 
     event.preventDefault();
+    location.reload();
 };
 
 function bindButtons(){
@@ -107,17 +109,23 @@ function buildTable(tableInfo){
         
         var edit = document.createElement("td");
         var editForm = document.createElement("form");
-        var editId = document.createElement("input");
-        editId.type = "hidden";
-        editId.name = "id";
-        editId.value = tableInfo.results[i].student_id;
+        var editSId = document.createElement("input");
+        var editCId = document.createElement("input");
+        editForm.action = "/students_courses/update";
+        editSId.type = "hidden";
+        editSId.name = "sid";
+        editSId.value = tableInfo.results[i].student_id;
+        editCId.type = "hidden";
+        editCId.name = "cid";
+        editCId.value = tableInfo.results[i].course_id;
         var editSubmit = document.createElement("input");
         editSubmit.type = "submit";
         editSubmit.value = "Edit";
         editSubmit.className += "edit btn btn-primary";
         edit.appendChild(editForm);
         edit.appendChild(editSubmit);
-        editForm.appendChild(editId);
+        editForm.appendChild(editSId);
+        editForm.appendChild(editCId);
         editForm.appendChild(editSubmit);
         edit.appendChild(editForm);
 

@@ -25,7 +25,7 @@ function submit(event){
         document.getElementById('department').value = "";
 
     } else {
-        console.log("Error: Info Missing");
+        alert("Error: Info Missing");
     };
     event.preventDefault();
 };
@@ -33,8 +33,9 @@ function submit(event){
 function deleteInstructor(event){
      
     var req = new XMLHttpRequest();
-    var payload = {task:'delete', id:null,};
+    var payload = {task:'delete', id:null, department:null};
     payload.id = event.target.previousSibling.value;
+    payload.department = event.target.parentElement.parentElement.previousSibling.textContent;
 
     req.open('POST', 'http://flip3.engr.oregonstate.edu:5550/instructors' , true);
     req.setRequestHeader('Content-Type', 'application/json');
@@ -48,6 +49,7 @@ function deleteInstructor(event){
     });
 
     event.preventDefault();
+    location.reload();
 };
 
 function bindButtons(){

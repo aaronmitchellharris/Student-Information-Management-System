@@ -2,9 +2,7 @@ function submit(event){
     if ((document.getElementById('id').value != "") &&
         (document.getElementById('fname').value != "") && 
         (document.getElementById('lname').value != "") &&
-        (document.getElementById('major').value != "") &&
         (document.getElementById('egdate').value != "") &&
-        (document.getElementById('department').value != "") &&
         (document.getElementById('unitsProgress').value != "") &&
         (document.getElementById('unitsCompleted').value != "")){
         
@@ -24,14 +22,13 @@ function submit(event){
         req.send(JSON.stringify(payload));
         req.addEventListener('load', function(){
             if(req.status >= 200 && req.status < 400){
-                console.log(req.responseText);
                 var response = JSON.parse(req.responseText);
-                
+                alert("Update Successful")
             }
         });
 
     } else {
-        console.log("Error: Info Missing");
+        alert("Error: Info Missing");
     };
     event.preventDefault();
 };

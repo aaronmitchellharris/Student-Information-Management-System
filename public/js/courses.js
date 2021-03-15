@@ -28,7 +28,7 @@ function submit(event){
         document.getElementById('units').value = "";
 
     } else {
-        console.log("Error: Info Missing");
+        alert("Error: Info Missing");
     };
     event.preventDefault();
 };
@@ -36,8 +36,9 @@ function submit(event){
 function deleteCourse(event){
      
     var req = new XMLHttpRequest();
-    var payload = {task:'delete', id:null,};
+    var payload = {task:'delete', id:null, department:null};
     payload.id = event.target.previousSibling.value;
+    payload.department = event.target.parentElement.parentElement.previousSibling.previousSibling.textContent;
 
     req.open('POST', 'http://flip3.engr.oregonstate.edu:5550/courses' , true);
     req.setRequestHeader('Content-Type', 'application/json');
@@ -51,6 +52,7 @@ function deleteCourse(event){
     });
 
     event.preventDefault();
+    location.reload();
 };
 
 function bindButtons(){

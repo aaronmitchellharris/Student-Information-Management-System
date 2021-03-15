@@ -1,9 +1,7 @@
 function submit(event){
     if ((document.getElementById('fname').value != "") && 
         (document.getElementById('lname').value != "") &&
-        (document.getElementById('major').value != "") &&
         (document.getElementById('egdate').value != "") &&
-        (document.getElementById('department').value != "") &&
         (document.getElementById('unitsProgress').value != "") &&
         (document.getElementById('unitsCompleted').value != "")){
         
@@ -37,7 +35,7 @@ function submit(event){
         document.getElementById('unitsCompleted').value = "";
 
     } else {
-        console.log("Error: Info Missing");
+        alert("Error: Info Missing");
     };
     event.preventDefault();
 };
@@ -119,7 +117,6 @@ function initial(){
 };
 buildList();
 initial();
-
 function buildTable(tableInfo){
     document.getElementsByTagName("table")[0].remove();
     var table = document.createElement("table");

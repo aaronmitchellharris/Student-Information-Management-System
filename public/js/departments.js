@@ -22,7 +22,7 @@ function submit(event){
         document.getElementById('code').value = "";
 
     } else {
-        console.log("Error: Info Missing");
+        alert("Error: Info Missing");
     };
     event.preventDefault();
 };
