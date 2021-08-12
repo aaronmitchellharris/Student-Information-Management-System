@@ -7,10 +7,10 @@ var bodyParser = require('body-parser');
 var mysql = require('mysql');
 var pool = mysql.createPool({
     connectionLimit : 10,
-    host            : 'classmysql.engr.oregonstate.edu',
-    user            : 'cs340_harriaar',
-    password        : '5513',
-    database        : 'cs340_harriaar'
+    host            : 'HOST',
+    user            : 'USER',
+    password        : 'PASSWORD',
+    database        : 'DATABASE'
 });
 
 app.use(bodyParser.urlencoded({ extended: false }));
